@@ -1,0 +1,55 @@
+extends ./root
+
+block page_header_content
+  .row
+    .col-xs-5.col-sm-2
+      #header-logo
+        a#logo(title=__(project.name), href=links.horoscope.home({ul: currentCulture.language}))
+        if (config.projects.length > 1)
+          ul#header-projects
+            each host, key in config.projects
+              li
+                a(target='_blank', href='http://'+host)= __(key)
+    .col-xs-7.col-sm-4.col-md-3
+      #header-search
+        form#search-form(method='get', action=links.weather.search())
+          if (currentCulture.language!==config.language)
+            input(type='hidden', name='ul', value=currentCulture.language)
+          input#q(name='q', type='text', placeholder= place && util.Place.getName(place,currentCulture.language) || __('search_text'))
+          a#search-btn
+            i.icon
+    .col-sm-6.col-md-7.hidden-xs
+      #header-widgets
+        .col-md-6.hidden-sm
+          if (mainExchangeRates && mainExchangeSource)
+            #widget-exchange
+              each item, i in mainExchangeRates
+                if (i<2)
+                  - var value = item.rate
+                  - var diff = value - item.rate1d
+                  - var diffCss = diff>0 ? "view-plus": "view-minus"
+                  - diffCss = diff==0 || diff==NaN?'view-no-change': diffCss
+                  div(class="item "+diffCss)
+                    .symbol= item.currency.symbol
+                    span(class="value")= util.numberFormat(value, 2, currentCulture.language)
+                    .popover
+                      small(class="details")= currentDate.format(config.monthFormat)
+                      .item-source(title=mainExchangeSource.name)= mainExchangeSource.abbr
+                      .item-value= util.numberFormat(value, 4, currentCulture.language)
+                      if(diff)
+                        small(class="item-diff")= util.numberFormat(diff, 4, currentCulture.language)
+                      .item-details
+                        a(href='//'+links.exchange.host)= __('exchange_rates')
+                          |  ›
+        .col-md-6.col-sm-12
+          if (capitalCity && capitalCity.currentForecast)
+            #widget-weather
+              //- .shadow
+              span.symbol.w-icon(class='wi-'+capitalCity.currentForecast.symbol.number, title=util.weather.symbolName(capitalCity.currentForecast.symbol, currentCulture.language))
+              span.name
+                a(href=links.weather.place(capitalCity.id, {utm_source:'weather',utm_medium:'link',utm_campaign:'header-weather'}))= util.Place.getName(capitalCity, currentCulture.language)
+                span.no= capitalCity.currentForecast.t.value + '°C'
+
+block page_main_content
+  section#page-content
+    block content

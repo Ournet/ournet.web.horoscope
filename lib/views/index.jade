@@ -1,0 +1,14 @@
+extends ./_layouts/horoscope
+
+block weather_content
+  .page-title
+    .pull-right
+      .social-likes(data-url=site.head.canonical)
+        each item in config.shareDataServices
+          div(class=item)
+    h1= title
+    h2.sub-title
+      = subTitle+' ('
+      a(href=links.weather.places({ul: currentCulture.language}))= util.format(__('other_n_places_format'),config.placesCount)
+      | )
+    br

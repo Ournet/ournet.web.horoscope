@@ -1,0 +1,55 @@
+extends ./layout
+
+block content
+  .row
+    //- left menu
+    .hidden-xs.col-sm-3.col-md-2
+      //- .group
+      //-   .group-title
+      //-     h4
+      //-       a(href=links.weather.home({ul:currentCulture.language}))= __('country_'+currentCulture.country)
+      //-   .group-content
+      //-     ul.main-menu
+      //-       each item in mainPlaces
+      //-         - var placeName = util.Place.getName(item, currentCulture.language)
+      //-         li
+      //-           a(href=links.weather.place(item.id,{ul:currentCulture.language}), title=placeName, class=(place && place.id && item.id == place.id ? 'selected': ''))= placeName
+      //-       li
+      //-         a(href=links.weather.places({ul:currentCulture.language}))= util.format(__('other_n_places_format'), config.placesCount)
+      block left_content
+      //- recent search
+      //- .group
+      //-   .group-title
+      //-     h4= __('recent_search')
+      //-   .group-content
+      //-     ul
+      //-       each item in latestPlaces
+      //-         - var itemName = util.Place.getName(item, currentCulture.language);
+      //-         li
+      //-           a(href=links.weather.place(item.id, {ul: currentCulture.language}), title=itemName)= itemName
+    //- center content
+    .col-xs-12.col-sm-9.col-md-6
+      if (location && location.length>1)
+        #user-location
+          for item, i in location
+            a(href=item.href)= item.text
+            if (i < location.length - 1)
+              ='  › '
+      block weather_content
+      if (showBottomAd && !noGoogleAds)
+        br
+        .ads-block.text-center
+          include ../_includes/ad-bottom
+      br
+    //- right content
+    #page-content-right.col-xs-12.col-md-4.hidden-sm
+      block right_content_top
+      if (!noGoogleAds)
+        .group
+          .ads-block.ads-600
+            // Ournet weather right
+            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-3959589883092051', data-ad-slot='1115823833', data-ad-format='auto')
+            script.
+              (adsbygoogle = window.adsbygoogle || []).push({});
+      block right_content_bottom
+      .group.hidden-xs!= config.socialPluginsHtmlCode
