@@ -93,11 +93,11 @@ html(lang=currentCulture.language)
       //- script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script.
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
-    //- script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
-    //- if (NODE_ENV==='production')
-    //-   script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/' + project.name + '/main-'+ config.assets.js.main +'.min.js')
-    //- else
-    //-   script(type='text/javascript', src='http://localhost:8044/js/' + project.name + '/main.js')
+    script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+    if (NODE_ENV==='production')
+      script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/' + project.name + '/main-'+ config.assets.js.main +'.min.js')
+    else
+      script(type='text/javascript', src='http://localhost:8044/js/' + project.name + '/main.js')
     block scripts
     
     script.
