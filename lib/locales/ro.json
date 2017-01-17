@@ -34,8 +34,10 @@
 	"horoscope_for_tomorrow": "Horoscopul pentru mâine",
 	"horoscope_for_date_format": "Horoscopul pentru %s",
 	"horoscope_for_today_details": "Horoscopul pentru astăzi %s.",
+	"horoscope_title_format": "Horoscop: %s",
 	"search_text": "search_text",
 	"info": "info",
 	"weather_cright": "weather_cright",
-	"useful": "useful"
+	"useful": "useful",
+	"exchange_rates": "exchange_rates"
 }

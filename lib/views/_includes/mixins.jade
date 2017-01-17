@@ -1,6 +1,7 @@
 mixin horoscopeReport(report, date)
   .report.clearfix
     .report-head
-      h3= __('sign_'+report.sign)
+      .zs(class=('zs-'+report.sign))
+      h4= __('sign_'+report.sign)
     .report-body
       != util.encodeReportText(report.text)
