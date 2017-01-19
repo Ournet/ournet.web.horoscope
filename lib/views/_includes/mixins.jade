@@ -1,7 +1,16 @@
 mixin horoscopeReport(report, date)
+  - var signName = util.signName(report.sign, currentCulture.language)
   .report.clearfix
     .report-head
-      .zs(class=('zs-'+report.sign))
-      h4= __('sign_'+report.sign)
+      a(href=links.horoscope.sign(signName.slug))
+        i.zodiacs(class=('zs-'+report.sign))
+        h4= signName.name
     .report-body
       != util.encodeReportText(report.text)
+
+mixin zodiacSignsIcons(options)
+  .zs-list
+    each i in [1,2,3,4,5,6,7,8,9,10,11,12]
+      - var sign = util.signName(i, currentCulture.language);
+      a(href=links.horoscope.sign(sign.slug))
+        i.zodiacs(class='zs-'+i)

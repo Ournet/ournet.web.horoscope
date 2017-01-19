@@ -13,20 +13,28 @@ block content
             if (i < location.length - 1)
               ='  › '
       block horoscope_content
-      if (showBottomAd && !noGoogleAds)
-        br
-        .ads-block.text-center
-          include ../_includes/ad-bottom
+      //- br
+      //- .ads-block.text-center
+      //-   include ../_includes/ad-bottom
+      br
       br
     //- right content
     #page-content-right.col-md-4
       block right_content_top
-      if (!noGoogleAds)
-        .group
-          .ads-block.ads-600
-            // Ournet weather right
-            ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-3959589883092051', data-ad-slot='1115823833', data-ad-format='auto')
-            script.
-              (adsbygoogle = window.adsbygoogle || []).push({});
+      if (latestStories && latestStories.length>0)
+        .group.view-stories
+          .group-title
+            h4= __('latest_news')
+          .group-content
+            .list.ot-news
+              each story, i in latestStories
+                if (i < 4)
+                  .list-item
+                    .item.ot-news.clearfix
+                      a.media(href='//'+links.news.host+ links.news.story(story.uniqueName, story.id))
+                        .media-left
+                          img.media-object(alt='', src=(Links.cdn.wi.stories('square', story.imageId)))
+                        .media-body= story.title
+
       block right_content_bottom
       .group.hidden-xs!= config.socialPluginsHtmlCode

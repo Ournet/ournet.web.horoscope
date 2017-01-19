@@ -11,13 +11,13 @@ block page_header_content
               li
                 a(target='_blank', href='http://'+host)= __(key)
     .col-xs-7.col-sm-4.col-md-3
-      #header-search
-        form#search-form(method='get', action=links.weather.search())
-          if (currentCulture.language!==config.language)
-            input(type='hidden', name='ul', value=currentCulture.language)
-          input#q(name='q', type='text', placeholder= place && util.Place.getName(place,currentCulture.language) || __('search_text'))
-          a#search-btn
-            i.icon
+      ul#header-menu
+        li.dd-item
+          a.selected(href=links.horoscope.home())= __('horoscope')
+        li.dd-item
+          a(href='//'+links.news.host+links.news.home({ul: currentCulture.language}))= __('news')
+        li.dd-item
+          a(href='//'+links.weather.host+(links.weather.home({ul: currentCulture.language})))= __('weather')
     .col-sm-6.col-md-7.hidden-xs
       #header-widgets
         .col-md-6.hidden-sm
@@ -53,3 +53,4 @@ block page_header_content
 block page_main_content
   section#page-content
     block content
+

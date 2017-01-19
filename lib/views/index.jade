@@ -1,7 +1,6 @@
 extends ./_layouts/horoscope
 
 block horoscope_content
-  .report-head
   .page-title
     .pull-right
       .social-likes(data-url=site.head.canonical)
@@ -15,3 +14,15 @@ block horoscope_content
   if (currentReports)
     each item in currentReports
       +horoscopeReport(item, currentDate)
+  br
+  include _includes/ad-bottom
+    //- br
+    //- a(class='btn-more', href=links.horoscope.sign())
+
+block prepend right_content_bottom
+  .group
+    .ads-block.ads-600
+      // Ournet horoscope right
+      ins.adsbygoogle(style='display:block', data-ad-client='ca-pub-3959589883092051', data-ad-slot='9547245832', data-ad-format='auto')
+      script.
+        (adsbygoogle = window.adsbygoogle || []).push({});

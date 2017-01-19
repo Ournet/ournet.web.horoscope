@@ -1,0 +1,33 @@
+extends ./_layouts/horoscope
+
+block horoscope_content
+  .page-title
+    .pull-right
+      .social-likes(data-url=site.head.canonical)
+        each item in config.shareDataServices
+          div(class=item)
+    h1= title
+    h2.sub-title
+      = subTitle
+    br
+
+  if (currentSignReport)
+    +horoscopeReport(currentSignReport, currentDate)
+    //- br
+    //- a(class='btn-more', href=links.horoscope.sign())
+  +zodiacSignsIcons()
+
+  .page-title
+    include _includes/ad-bottom
+    br
+    .fb-comments(data-href=site.head.canonical, data-numposts="5", data-width="100%")
+
+block append scripts
+  script.
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/#{site.simpleLocale}/sdk.js#xfbml=1&version=v2.6&appId=#{config.facebookId}";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
