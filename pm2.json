@@ -1,5 +1,5 @@
 {
   "script": "./lib/app.js",
-  "max_memory_restart": "300M",
+  "max_memory_restart": "200M",
   "name": "ournet-horoscope"
 }
