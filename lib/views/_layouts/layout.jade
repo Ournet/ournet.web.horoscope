@@ -47,7 +47,7 @@ block page_header_content
               //- .shadow
               span.symbol.w-icon(class='wi-'+capitalCity.currentForecast.symbol.number, title=util.weather.symbolName(capitalCity.currentForecast.symbol, currentCulture.language))
               span.name
-                a(href=links.weather.place(capitalCity.id, {utm_source:'weather',utm_medium:'link',utm_campaign:'header-weather'}))= util.Place.getName(capitalCity, currentCulture.language)
+                a(href='//'+links.weather.host+links.weather.place(capitalCity.id, {utm_source:'weather',utm_medium:'link',utm_campaign:'header-weather'}))= util.Place.getName(capitalCity, currentCulture.language)
                 span.no= capitalCity.currentForecast.t.value + '°C'
 
 block page_main_content

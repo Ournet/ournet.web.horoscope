@@ -88,6 +88,11 @@ html(lang=currentCulture.language)
               div
                 a(href='http://'+host)= __(key)
 
+    if (NODE_ENV==='production')
+      link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
+    else
+      link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/zodiac-signs.css')
+
     script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script.
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
