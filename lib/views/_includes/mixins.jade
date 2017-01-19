@@ -1,6 +1,8 @@
 mixin horoscopeReport(report, date)
   - var signName = util.signName(report.sign, currentCulture.language)
   .report.clearfix
+    if (date)
+      .report-date=date
     .report-head
       a(href=links.horoscope.sign(signName.slug))
         i.zodiacs(class=('zs-'+report.sign))

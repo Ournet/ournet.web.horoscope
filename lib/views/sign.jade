@@ -12,7 +12,7 @@ block horoscope_content
     br
       
   if (currentSignReport)
-    +horoscopeReport(currentSignReport, currentDate)
+    +horoscopeReport(currentSignReport, currentDate.format(config.dayFormat))
     //- br
     //- a(class='btn-more', href=links.horoscope.sign())
   +zodiacSignsIcons()
