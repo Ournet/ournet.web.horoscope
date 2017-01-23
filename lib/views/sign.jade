@@ -1,21 +1,27 @@
 extends ./_layouts/horoscope
 
 block horoscope_content
-  .page-title.report-margin
+  .report-margin
     .pull-right
-      .social-likes(data-url=site.head.canonical)
-        each item in config.shareDataServices
-          div(class=item)
-    h1= title
-    h2.sub-title
-      = subTitle
-    br
+        .social-likes(data-url=site.head.canonical)
+          each item in config.shareDataServices
+            div(class=item)
+    .a-periods
+      each item in periods
+        a(class=item.css, href=item.href)= item.text
+    .page-title
+      h1= title
+      h2.sub-title
+        = subTitle
+      br
       
   if (currentSignReport)
-    +horoscopeReport(currentSignReport, currentDate.format(config.dayFormat))
-    //- br
-    //- a(class='btn-more', href=links.horoscope.sign())
-  +zodiacSignsIcons()
+    if (periodSign === 'W')
+      +horoscopeWeekReport(currentSignReport, currentWeekPeriodText)
+      +weekZodiacSignsIcons()
+    else
+      +horoscopeDayReport(currentSignReport, currentDayPeriodText)
+      +dayZodiacSignsIcons()
 
   .report-margin
     include _includes/ad-bottom
