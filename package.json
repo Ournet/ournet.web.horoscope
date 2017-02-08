@@ -39,11 +39,11 @@
     "metno-symbols": "^0.1.0",
     "moment-timezone": "^0.5.1",
     "morgan": "^1.5.1",
-    "ournet.api.client": "0.0.1",
     "ournet.data.weather": "^0.6.21",
     "ournet.links": "^0.2.2",
     "ournet.logger": "^0.1.0",
     "ournet.utils": "^0.1.0",
+    "ournet.web.data": "^0.1.2",
     "response-time": "^2.2.0",
     "transparentcache": "^1.0.0"
   },
