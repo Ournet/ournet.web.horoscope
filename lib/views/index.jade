@@ -3,7 +3,7 @@ extends ./_layouts/horoscope
 block horoscope_content
   .report-margin
     .pull-right
-        .social-likes(data-url=site.head.canonical)
+        .social-likes(data-url=config.protocol+site.head.canonical)
           each item in config.shareDataServices
             div(class=item)
     .a-periods
