@@ -10,7 +10,7 @@ html(lang=currentCulture.language)
       meta(name='keywords', content=site.head.keywords)
     block styles
     if (NODE_ENV==='production')
-      link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/' + project.name + '/main-'+ config.assets.css.main +'.min.css')
+      link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/' + project.name + '/main-'+ config.assets.css.main +'.min.css')
     else
       link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/' + project.name + '/main.css')
     if (site.head.canonical)
@@ -89,7 +89,7 @@ html(lang=currentCulture.language)
                 a(href='http://'+host)= __(key)
 
     if (NODE_ENV==='production')
-      link(type='text/css', rel='stylesheet', href='http://assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
+      link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
     else
       link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/zodiac-signs.css')
 
@@ -98,7 +98,7 @@ html(lang=currentCulture.language)
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
     script(type='text/javascript', src='//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
     if (NODE_ENV==='production')
-      script(type='text/javascript', src='http://assets.ournetcdn.net/ournet/js/' + project.name + '/main-'+ config.assets.js.main +'.min.js')
+      script(type='text/javascript', src='//assets.ournetcdn.net/ournet/js/' + project.name + '/main-'+ config.assets.js.main +'.min.js')
     else
       script(type='text/javascript', src='http://localhost:8044/js/' + project.name + '/main.js')
     block scripts
