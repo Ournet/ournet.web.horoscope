@@ -14,7 +14,7 @@ html(lang=currentCulture.language)
     else
       link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/' + project.name + '/main.css')
     if (site.head.canonical)
-      link(rel='canonical', href=site.head.canonical)
+      link(rel='canonical', href='https:'+site.head.canonical)
     //- link(rel='shortcut icon', href=config.favicon)
     include ../_includes/favicons.jade
 
