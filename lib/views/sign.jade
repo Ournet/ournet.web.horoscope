@@ -31,6 +31,24 @@ block horoscope_content
     include _includes/ad-bottom
 
 block append scripts
+  script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
+  script.
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(['init', {
+      appId: '20d478b4-fb13-42db-a663-75516e67ba9a',
+      autoRegister: false,
+      notifyButton: {
+        enable: true
+      }
+    }]);
+    OneSignal.push(function() {
+      // Occurs when the user's subscription changes to a new value.
+      OneSignal.on('subscriptionChange', function (isSubscribed) {
+        if(isSubscribed) {
+          OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+        }
+      });
+    });
   script.
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
