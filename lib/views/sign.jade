@@ -6,9 +6,10 @@ block horoscope_content
         .social-likes(data-url=site.head.canonical)
           each item in config.shareDataServices
             div(class=item)
-    .a-periods
-      each item in periods
-        a(class=item.css, href=item.href)= item.text
+    if (periods)
+      .a-periods
+        each item in periods
+          a(class=item.css, href=item.href)= item.text
     .page-title
       h1= title
       h2.sub-title
@@ -31,34 +32,39 @@ block horoscope_content
     include _includes/ad-bottom
 
 block append scripts
-  script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
-  script.
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(['init', {
-      appId: '20d478b4-fb13-42db-a663-75516e67ba9a',
-      autoRegister: true,
-      notifyButton: {
-        enable: true,
-        showCredit: false,
-        prenotify: true
-      },
-      welcomeNotification: {
-        disable: true
-      },
-      safari_web_id: 'web.onesignal.auto.3f550615-46c0-4fa5-9ee8-42953ece3d19'
-    }]);
-    OneSignal.push(function() {
-      OneSignal.on('notificationPermissionChange', function(permissionChange) {
-        var currentPermission = permissionChange.to;
-        ga('send', 'event', 'notifications', currentPermission);
+  if (config.oneSignal)
+    script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
+    script.
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(['init', {
+        appId: "#{config.oneSignal.appId}",
+        autoRegister: true,
+        notifyButton: {
+          enable: true,
+          showCredit: false,
+          prenotify: true
+        },
+        welcomeNotification: {
+          disable: true
+        },
+        safari_web_id: "#{config.oneSignal.safari_web_id}"
+      }]);
+      OneSignal.push(function() {
+        OneSignal.on('notificationPermissionChange', function(permissionChange) {
+          var currentPermission = permissionChange.to;
+          if (currentPermission === 'granted') {
+            OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+          }
+          ga('send', 'event', 'notifications', currentPermission);
+        });
+        // Occurs when the user's subscription changes to a new value.
+        OneSignal.on('subscriptionChange', function (isSubscribed) {
+          if (isSubscribed) {
+            OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+          }
+        });
       });
-      // Occurs when the user's subscription changes to a new value.
-      OneSignal.on('subscriptionChange', function (isSubscribed) {
-        if(isSubscribed) {
-          OneSignal.sendTag('zodiac-sign', '#{sign.id}');
-        }
-      });
-    });
+
   script.
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

@@ -1,7 +1,0 @@
-{
-  "name": "horoscop.ournet.ro",
-  "short_name": "horoscop",
-  "start_url": "/",
-  "display": "standalone",
-  "gcm_sender_id": "482941778795"
-}

@@ -71,7 +71,21 @@
 	"forecast_on_email_place": "Прогноз погоды на вашу электронную почту: %s.",
 	"subscribe_info": "Эта функция в периоде развития.",
 	"total_subscribers_format": "Общее число абонентов: %d",
-
 	"weather_for_10days": "Прогноз погоды на 10 дней",
-	"days": "дней"
+	"days": "дней",
+	"horoscope": "Гороскоп",
+	"daily_horoscope": "Ежедневный гороскоп",
+	"daily_horoscope_details": "Ежедневный гороскоп. Гороскоп на сегодня и завтра.",
+	"daily_horoscope_format": "Гороскоп: %s",
+	"daily_horoscope_details_format": "Гороскоп на сегодня %s.",
+	"weekly_horoscope": "Еженедельный гороскоп",
+	"weekly_horoscope_details": "Еженедельный гороскоп. Гороскоп на этой неделе.",
+	"weekly_horoscope_format": "Еженедельный гороскоп: %s",
+	"weekly_horoscope_details_format": "Еженедельный гороскоп: %s.",
+	"sign_daily_title_format": "%s: Ежедневный гороскоп",
+	"sign_daily_details_format": "%s. Ежедневный гороскоп: %s",
+	"sign_weekly_title_format": "%s: Еженедельный гороскоп",
+	"sign_weekly_details_format": "%s. Еженедельный гороскоп: %s",
+	"daily": "daily",
+	"weekly": "weekly"
 }

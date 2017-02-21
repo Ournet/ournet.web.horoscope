@@ -6,9 +6,10 @@ block horoscope_content
         .social-likes(data-url=site.head.canonical)
           each item in config.shareDataServices
             div(class=item)
-    .a-periods
-      each item in periods
-        a(class=item.css, href=item.href)= item.text
+    if (periods)
+      .a-periods
+        each item in periods
+          a(class=item.css, href=item.href)= item.text
     .page-title
       h1= title
       h2.sub-title
