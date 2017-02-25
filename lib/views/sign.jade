@@ -39,9 +39,9 @@ block append scripts
     script.
       var OneSignal = window.OneSignal || [];
 
-      function subscribeToNotifications() {
+      function subscribeToNotifications(event) {
         OneSignal.push(["registerForPushNotifications"]);
-        event.preventDefault();
+        event && event.preventDefault();
       }
 
       function hideSubscribe() {
