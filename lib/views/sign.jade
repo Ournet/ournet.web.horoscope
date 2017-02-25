@@ -19,9 +19,11 @@ block horoscope_content
   if (currentSignReport)
     if (periodSign === 'W')
       +horoscopeWeekReport(currentSignReport, currentWeekPeriodText)
+      //- include ./_includes/n-subscribe
       +weekZodiacSignsIcons()
     else
       +horoscopeDayReport(currentSignReport, currentDayPeriodText)
+      //- include ./_includes/n-subscribe
       +dayZodiacSignsIcons()
 
   .report-margin
@@ -36,9 +38,23 @@ block append scripts
     script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
     script.
       var OneSignal = window.OneSignal || [];
+
+      function subscribeToNotifications() {
+        OneSignal.push(["registerForPushNotifications"]);
+        event.preventDefault();
+      }
+
+      function hideSubscribe() {
+        //- document.getElementById('n-subscribe-block').style.display = 'none';
+      }
+      function showSubscribe() {
+        //- document.getElementById('n-subscribe-block').style.display = 'block';
+      }
+
       OneSignal.push(['init', {
         appId: "#{config.oneSignal.appId}",
-        autoRegister: true,
+        autoRegister: false,
+        persistNotification: false,
         notifyButton: {
           enable: true,
           showCredit: false,
@@ -55,12 +71,29 @@ block append scripts
           if (currentPermission === 'granted') {
             OneSignal.sendTag('zodiac-sign', '#{sign.id}');
           }
+          hideSubscribe();
           ga('send', 'event', 'notifications', currentPermission);
         });
         // Occurs when the user's subscription changes to a new value.
         OneSignal.on('subscriptionChange', function (isSubscribed) {
           if (isSubscribed) {
+            hideSubscribe();
             OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+          }
+        });
+
+        // If we're on an unsupported browser, do nothing
+        if (!OneSignal.isPushNotificationsSupported()) {
+          hideSubscribe();
+          ga('send', 'event', 'notifications', 'not-supported');
+          return;
+        }
+        OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+          if (isEnabled) {
+            hideSubscribe();
+          } else {
+            setTimeout(subscribeToNotifications, 1000*3);
+            showSubscribe();
           }
         });
       });
