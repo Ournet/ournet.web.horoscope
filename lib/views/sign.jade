@@ -40,7 +40,7 @@ block append scripts
       var OneSignal = window.OneSignal || [];
 
       function subscribeToNotifications() {
-        OneSignal.push(['registerForPushNotifications']);
+        OneSignal.registerForPushNotifications();
         ga('send', 'event', 'notifications', 'show-register-native');
         //- event && event.preventDefault();
       }
