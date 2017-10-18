@@ -1,6 +1,6 @@
 {
   "name": "ournet.web.horoscope",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Ournet horoscope web server",
   "main": "./lib/app.js",

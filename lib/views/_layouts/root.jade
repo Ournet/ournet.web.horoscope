@@ -88,6 +88,8 @@ html(lang=currentCulture.language)
             each host, key in config.projects
               div
                 a(href='http://'+host)= __(key)
+            div
+                a(href='/api', title=__('export_horoscope'))= __('export_horoscope')
 
     if (NODE_ENV==='production')
       link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
