@@ -27,6 +27,10 @@ block horoscope_content
       +dayZodiacSignsIcons()
 
   .report-margin
+    .c-lead
+      //- h4= __('install_mobile_app')
+      a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}', target="_blank")
+        img(alt='Google Play', class='o-mobile-app-img', src='https://play.google.com/intl/en_us/badges/images/generic/#{currentCulture.language}_badge_web_generic.png')
     include _includes/ad-bottom
     br
     .fb-comments(data-href=site.head.canonical, data-numposts="5", data-width="100%")

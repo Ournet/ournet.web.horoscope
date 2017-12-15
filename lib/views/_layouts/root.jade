@@ -90,6 +90,14 @@ html(lang=currentCulture.language)
                 a(href='http://'+host)= __(key)
             div
                 a(href='/api', title=__('export_horoscope'))= __('export_horoscope')
+            if (config.androidAppId)
+              div
+                a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}') Android
+          .col-sm-4.col-xs-12
+            if (config.androidAppId)
+              div
+                a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}', target="_blank")
+                  img(alt='Google Play', class='o-mobile-app-img', src='https://play.google.com/intl/en_us/badges/images/generic/#{currentCulture.language}_badge_web_generic.png')
 
     if (NODE_ENV==='production')
       link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
