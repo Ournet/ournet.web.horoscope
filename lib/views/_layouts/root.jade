@@ -90,9 +90,6 @@ html(lang=currentCulture.language)
                 a(href='http://'+host)= __(key)
             div
                 a(href='/api', title=__('export_horoscope'))= __('export_horoscope')
-            if (config.androidAppId)
-              div
-                a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}') Android
           .col-sm-4.col-xs-12
             if (config.androidAppId)
               div
