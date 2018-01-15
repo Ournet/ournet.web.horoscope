@@ -96,11 +96,6 @@ html(lang=currentCulture.language)
                 a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}', target="_blank")
                   img(alt='Google Play', class='o-mobile-app-img', src='https://play.google.com/intl/en_us/badges/images/generic/#{currentCulture.language}_badge_web_generic.png')
 
-    if (NODE_ENV==='production')
-      link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/zodiac-signs.min.css')
-    else
-      link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/zodiac-signs.css')
-
     script(async='', src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script.
       window.globalInitData={cn: '#{config.country}',ul:'#{currentCulture.language}'};
