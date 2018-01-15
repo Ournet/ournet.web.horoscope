@@ -27,10 +27,12 @@ block horoscope_content
       +dayZodiacSignsIcons()
 
   .report-margin
-    .c-lead
-      //- h4= __('install_mobile_app')
-      a(href='https://play.google.com/store/apps/details?id=#{config.androidAppId}', target="_blank")
-        img(alt='Google Play', class='o-mobile-app-img', src='https://play.google.com/intl/en_us/badges/images/generic/#{currentCulture.language}_badge_web_generic.png')
+    .c-lead.hidden.js-subscribe-block
+      br
+      a.btn.btn-primary.js-subscribe-btn(href='#')
+        strong= __('subscribe_to_daily_notifications')
+      br
+      br
     include _includes/ad-bottom
     br
     .fb-comments(data-href=site.head.canonical, data-numposts="5", data-width="100%")
@@ -43,6 +45,12 @@ block append scripts
     script.
       var OneSignal = window.OneSignal || [];
 
+      $('.js-subscribe-btn').click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        subscribeToNotifications();
+      });
+
       function subscribeToNotifications() {
         OneSignal.registerForPushNotifications();
         ga('send', 'event', 'notifications', 'show-register-native');
@@ -50,10 +58,12 @@ block append scripts
       }
 
       function hideSubscribe() {
-        //- document.getElementById('n-subscribe-block').style.display = 'none';
+        $('js-subscribe-block').removeClass('hidden');
+        //- document.getElementById('js-subscribe-block').style.display = 'none';
       }
       function showSubscribe() {
-        //- document.getElementById('n-subscribe-block').style.display = 'block';
+        $('js-subscribe-block').addClass('hidden');
+        //- document.getElementById('js-subscribe-block').style.display = 'block';
       }
 
       OneSignal.push(['init', {
@@ -97,7 +107,7 @@ block append scripts
           if (isEnabled) {
             hideSubscribe();
           } else {
-            setTimeout(subscribeToNotifications, 1000*6);
+            //- setTimeout(subscribeToNotifications, 1000*6);
             showSubscribe();
           }
         });
