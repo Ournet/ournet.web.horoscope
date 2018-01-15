@@ -48,6 +48,7 @@ block append scripts
       $('.js-subscribe-btn').click(function(event) {
         event.preventDefault();
         event.stopPropagation();
+        ga('send', 'event', 'notifications', 'click-subscribe-btn');
         subscribeToNotifications();
       });
 
@@ -86,7 +87,6 @@ block append scripts
           if (currentPermission === 'granted') {
             OneSignal.sendTag('zodiac-sign', '#{sign.id}');
           }
-          hideSubscribe();
           ga('send', 'event', 'notifications', currentPermission);
         });
         // Occurs when the user's subscription changes to a new value.
@@ -94,6 +94,8 @@ block append scripts
           if (isSubscribed) {
             hideSubscribe();
             OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+          }else{
+            showSubscribe();
           }
         });
 
