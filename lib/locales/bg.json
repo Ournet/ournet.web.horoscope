@@ -36,7 +36,6 @@
 	"search_place_in_cn_format": "Намери град в %s, %s",
 	"search_place_in_cn": "Намери град в %s",
 	"weather_in_format": "Времето в %s",
-
 	"weather_on_your_site": "Времето на вашия сайт",
 	"weather_on_your_site_info": "Прогноза за времето на вашия сайт за всяко място в %s.",
 	"configuration": "Конфигурация",
@@ -64,12 +63,22 @@
 	"temperature": "Температура",
 	"mm": "мм",
 	"wind": "Вятър",
-
 	"subscribe": "Абонирай се",
 	"invalid_email": "Грешен имейл!",
 	"forecast_on_email_place": "Времето на имейл за %s",
 	"total_subscribers_format": "Общо абонатите: %d",
-
 	"weather_for_10days": "Времето за 10 дни",
-	"days": "дни"
+	"days": "дни",
+	"daily_horoscope": "Ежедневен хороскоп",
+	"daily_horoscope_details": "Ежедневен хороскоп. Хороскоп за днес и утре.",
+	"daily_horoscope_format": "Хороскоп: %s",
+	"daily_horoscope_details_format": "Хороскоп за днес %s",
+	"horoscope": "Хороскопи",
+	"export_horoscope": "Разработчици",
+	"api_title": "Хороскопи API",
+	"api_subtitle": "Дневен хороскоп, предлаган от ${project} безплатно",
+	"api_body": "<h3>Ежедневен хороскоп</h3><p>${project} предлага безплатни доклади за хороскоп за уеб сайтове и приложения.</p><p>Докладите са предоставени във формата JSON на следния адрес:</p><p><code>${schema}//${host}/api/reports.json?client=CLIENT&period=PERIOD</code></p><p>Когато <code>PERIOD</code> (незадължително) - е датата, за която се изискват отчетите. За деня: D${currentDate}, седмично: W201812.</p><p>И <code>CLIENT</code> (задължително) - е адресът на вашия сайт или идентификационният номер на вашето приложение.</p><p>Пример: <code>${schema}//${host}/api/reports.json?client=${host}</code></p><h3>Условия за ползване</h3><p>Уебсайтовете се ангажират да добавят връзка към ${host}, а в приложенията ще се споменава източникът.</p>",
+	"sign_daily_title_format": "%s: Хороскоп на деня",
+	"sign_daily_details_format": "%s. Хороскоп на деня: %s",
+	"subscribe_to_daily_notifications": "Абонамент за дневни известия"
 }
