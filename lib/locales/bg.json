@@ -72,13 +72,13 @@
 	"daily_horoscope": "Ежедневен хороскоп",
 	"daily_horoscope_details": "Ежедневен хороскоп. Хороскоп за днес и утре.",
 	"daily_horoscope_format": "Хороскоп: %s",
-	"daily_horoscope_details_format": "Хороскоп за днес %s",
+	"daily_horoscope_details_format": "Хороскоп за деня %s",
 	"horoscope": "Хороскопи",
 	"export_horoscope": "Разработчици",
 	"api_title": "Хороскопи API",
 	"api_subtitle": "Дневен хороскоп, предлаган от ${project} безплатно",
 	"api_body": "<h3>Ежедневен хороскоп</h3><p>${project} предлага безплатни доклади за хороскоп за уеб сайтове и приложения.</p><p>Докладите са предоставени във формата JSON на следния адрес:</p><p><code>${schema}//${host}/api/reports.json?client=CLIENT&period=PERIOD</code></p><p>Когато <code>PERIOD</code> (незадължително) - е датата, за която се изискват отчетите. За деня: D${currentDate}, седмично: W201812.</p><p>И <code>CLIENT</code> (задължително) - е адресът на вашия сайт или идентификационният номер на вашето приложение.</p><p>Пример: <code>${schema}//${host}/api/reports.json?client=${host}</code></p><h3>Условия за ползване</h3><p>Уебсайтовете се ангажират да добавят връзка към ${host}, а в приложенията ще се споменава източникът.</p>",
-	"sign_daily_title_format": "%s: Хороскоп на деня",
-	"sign_daily_details_format": "%s. Хороскоп на деня: %s",
+	"sign_daily_title_format": "%s: Дневен хороскоп",
+	"sign_daily_details_format": "%s. Дневен хороскоп: %s",
 	"subscribe_to_daily_notifications": "Абонамент за дневни известия"
 }
