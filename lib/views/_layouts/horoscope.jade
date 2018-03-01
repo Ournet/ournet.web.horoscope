@@ -21,20 +21,6 @@ block content
     //- right content
     #page-content-right.col-md-4
       block right_content_top
-      if (descoperoArticles && descoperoArticles.length>0)
-        .group.view-stories
-          .group-title
-            h4 Descope.ro
-          .group-content
-            .list.ot-news
-              each story, i in descoperoArticles
-                if (i < 4)
-                  .list-item
-                    .item.ot-news.clearfix
-                      a.media(href=story.link)
-                        .media-left
-                          img.media-object(alt='', src=story.image+'?w=80&h=80&fit=fill')
-                        .media-body= story.title
       if (latestStories && latestStories.length>0)
         .group.view-stories
           .group-title
