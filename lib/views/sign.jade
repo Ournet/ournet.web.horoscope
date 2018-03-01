@@ -109,7 +109,8 @@ block append scripts
           if (isEnabled) {
             hideSubscribe();
           } else {
-            showSubscribe();
+            //- showSubscribe();
+            setTimeout(subscribeToNotifications, 1000*2)
           }
         });
       });
