@@ -17,7 +17,7 @@ html(lang=currentCulture.language)
     if (site.head.canonical)
       link(rel='canonical', href=site.head.canonical)
     //- link(rel='shortcut icon', href=config.favicon)
-    include ../_includes/favicons.jade
+    include ../_includes/favicons
 
     if (config.facebookId)
       meta(property='fb:app_id', content=config.facebookId)
@@ -37,7 +37,7 @@ html(lang=currentCulture.language)
 
   body(class=('country-'+currentCulture.country+' project-'+project.name+' language-'+currentCulture.language + ' '+site.platform + ' '+(site.pageLayoutCss||'')))
     #fb-root
-
+    include ../_includes/zodiac-svg
     #page-top
       #top-line
         .accent-line

@@ -18,11 +18,11 @@ block horoscope_content
       
   if (currentSignReport)
     if (periodSign === 'W')
-      +horoscopeWeekReport(currentSignReport, currentWeekPeriodText)
+      +horoscopeWeekReport(currentSignReport, currentWeekPeriodText, true)
       //- include ./_includes/n-subscribe
       +weekZodiacSignsIcons()
     else
-      +horoscopeDayReport(currentSignReport, currentDayPeriodText)
+      +horoscopeDayReport(currentSignReport, currentDayPeriodText, true)
       //- include ./_includes/n-subscribe
       +dayZodiacSignsIcons()
 

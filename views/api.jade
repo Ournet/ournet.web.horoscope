@@ -15,7 +15,8 @@ block horoscope_content
             h1= title
             h2.sub-title= subTitle
     br
-    .report-body!= body
+    .report-body
+        .report-text!= body
     br
     .fb-comments(data-href=site.head.canonical, data-numposts="5", data-width="100%")
     br
