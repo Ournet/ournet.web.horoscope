@@ -1,0 +1,13 @@
+extends ./layout
+
+block append styles
+  if (NODE_ENV==='production')
+    link(type='text/css', rel='stylesheet', href='//assets.ournetcdn.net/ournet/css/horoscope/page-widget-'+ config.assets.css.pageWidget +'.css')
+  else
+    link(type='text/css', rel='stylesheet', href='http://localhost:8044/css/horoscope/page-widget.css')
+
+block append scripts
+  if (NODE_ENV==='production')
+    script(type='text/javascript', src='//assets.ournetcdn.net/ournet/js/horoscope/page-widget-'+ config.assets.js.pageWidget +'.js')
+  else
+    script(type='text/javascript', src='http://localhost:8044/js/horoscope/page-widget.js')

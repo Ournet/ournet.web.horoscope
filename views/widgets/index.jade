@@ -1,0 +1,57 @@
+extends ../_layouts/widget
+
+block page_main_content
+  input#widget-type(type="hidden", value="widget1")
+  .row
+    .col-sm-5.col-xs-12
+      .page-title
+        h1= __('horoscope_on_your_site')
+        h2.sub-title= site.head.description
+      #widget-tabs.box-tabs(data-ref='#widget-box fieldset')
+        .box-tab.active Widget 1
+      #widget-box.content-box
+        table.form-table
+          tr
+            td(colspan=2)
+              fieldset.form
+                table.form-table
+                  tr
+                    th
+                      label(for='w1-conf__back_color')= __('back_color') + ':'
+                    th
+                      label(for='w1-conf__text_color')= __('text_color') + ':'
+                  tr
+                    td
+                      input.conf-input(type='text', name='back_color', value='f2f0ea', maxlength='6', minlength=3)
+                    td
+                      input.conf-input(type='text', name='text_color', placeholder='333', maxlength='6', minlength=3)
+            tr
+              td
+              td
+                button#widget-conf-generate.btn.btn-danger(type='button')= __('generate')
+      
+      br
+      .text-center
+        .social-likes(data-url=site.head.canonical)
+          each item in config.shareDataServices
+            div(class=item)
+      br
+      br
+    .col-sm-7.col-xs-12
+      div#widget-preview
+        h2= __('preview')
+        br
+        #widget-iframe
+        h2= __('html_code')
+        //- input.scripttype(type='hidden',checked, name='scripttype', value='iframe')
+        //- .row
+        //-   .col-xs-6.text-right
+        //-     label
+        //-       input.scripttype(type='radio',checked, name='scripttype', value='iframe')
+        //-       | IFRAME
+        //-   .col-xs-6.text-left
+        //-     label
+        //-       input.scripttype(type='radio', checked, name='scripttype', value='script')
+        //-       | JS
+        div
+          textarea#widget-script

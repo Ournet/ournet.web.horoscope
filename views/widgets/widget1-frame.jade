@@ -1,0 +1,401 @@
+doctype html
+html(lang=currentCulture.language)
+  head
+    title Horoscope Widget1
+    style(type='text/css').
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box; }
+
+      html {
+        font-family: sans-serif;
+        line-height: 1.15;
+        height:100%;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -ms-overflow-style: scrollbar;
+        -webkit-tap-highlight-color: transparent; }
+
+      @-ms-viewport {
+        width: device-width; }
+
+      article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+        display: block; }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+        height:100%;
+        color: ##{widget.textColor};
+        background-color: ##{widget.backColor}; }
+
+      [tabindex="-1"]:focus {
+        outline: 0 !important; }
+
+      hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible; }
+
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+        margin-bottom: 0.5rem; }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 1rem; }
+
+      ol,
+      ul,
+      dl {
+        margin-top: 0;
+        margin-bottom: 1rem; }
+
+      ol ol,
+      ul ul,
+      ol ul,
+      ul ol {
+        margin-bottom: 0; }
+
+      dt {
+        font-weight: 700; }
+
+      dd {
+        margin-bottom: .5rem;
+        margin-left: 0; }
+
+      blockquote {
+        margin: 0 0 1rem; }
+
+      dfn {
+        font-style: italic; }
+
+      b,
+      strong {
+        font-weight: bolder; }
+
+      small {
+        font-size: 80%; }
+
+      sub,
+      sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline; }
+
+      sub {
+        bottom: -.25em; }
+
+      sup {
+        top: -.5em; }
+
+      a {
+        text-decoration: none;
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects; }
+        a:hover { }
+
+      a:not([href]):not([tabindex]) {
+        color: inherit;
+        text-decoration: none; }
+        a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+          color: inherit;
+          text-decoration: none; }
+        a:not([href]):not([tabindex]):focus {
+          outline: 0; }
+
+      figure {
+        margin: 0 0 1rem; }
+
+      img {
+        vertical-align: middle;
+        border-style: none; }
+
+      svg:not(:root) {
+        overflow: hidden; }
+
+      a {
+        text-decoration:none;
+        color: ##{widget.iconColor}; }
+      a:active { }
+
+      .c-widget{
+        position:relative;
+        height:100%;
+        overflow:hidden;}
+      .c-zs-list{
+        padding:5px;
+        vertical-align: middle;
+        height:100%;}
+      .c-zs-list:after {
+        vertical-align: middle;
+      }
+      .c-zs-item {
+        padding: 5px;
+        width: 100%;
+        height:100%;
+        display:inline-block;
+        text-decoration:none;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        color: ##{widget.textColor};}
+      .c-zs-list--col-1 .c-zs-item {
+        height:8.33%; }
+      .c-zs-list--col-2 .c-zs-item {
+        width:50%;height:16.66%; }
+      .c-zs-list--col-3 .c-zs-item {
+        width:33.3%;height:25%; }
+      .c-zs-list--col-4 .c-zs-item {
+        width:25%;;height:33.3%; }
+      .c-zs-list--col-6 .c-zs-item {
+        width:16.66%;height:50%; }
+      .c-zs-list--col-12 .c-zs-item {
+        width:8.33%; }
+
+      .c-zs-icon {
+        width: 100%;
+        height: 75%;
+        display: block;
+        vertical-align: middle;
+      }
+      .c-zs-icon svg {
+        height:100%;
+        width:100%;
+        fill: ##{widget.iconColor}; }
+      .c-zs-name {
+        font-weight: bold;
+      }
+      .c-zs-dates {
+        display: none;
+        font-size:75%;
+      }
+      
+      .c-zs-list--tiny {
+        font-size: 70%;
+      }
+      .c-zs-list--small {
+        font-size: 80%;
+      }
+      .c-zs-list--huge {
+      }
+      .c-zs-list--tiny .c-zs-icon {
+        height:100%;
+      }
+      .c-zs-list--large .c-zs-icon {
+        height:75%;
+      }
+      .c-zs-list--huge .c-zs-icon {
+        height:70%;
+      }
+      .c-zs-list--small .c-zs-name {
+        font-weight: normal;
+      }
+      .c-zs-list--tiny .c-zs-name {
+        display: none;
+      }
+      .c-zs-list--huge.c-zs-list--w-large .c-zs-dates  {
+        display: block;
+      }
+      .c-zs-list--w-small .c-zs-name  {
+        font-size: 80%;
+        font-weight: normal;
+      }
+      .c-zs-list--w-tiny .c-zs-name  {
+        display: none;
+      }
+      .c-zs-list--w-tiny .c-zs-icon  {
+        height:100%;
+      }
+
+      #report {
+        height: 100%;
+      }
+      .report-back {
+        padding:4px 10px;
+        cursor: pointer;
+        background: ##{widget.iconColor};
+        color: ##{widget.backColor};
+      }
+      .report-back i {
+        display: inline-block;
+        font-style: normal;
+        font-size: 200%;
+        font-weight: bold;
+        line-height: 16px;
+      }
+      .report-name {
+        font-weight: bold;
+        font-size: 110%;
+        padding:4px 10px;
+      }
+      .report-text {
+        padding: 10px;
+        max-height: 60%;
+        font-size: 90%;
+        overflow: hidden;
+      }
+      .report-more {
+        padding:4px 10px;
+        font-size: 80%;
+        text-align: right;
+      }
+      .report-more a{
+        text-decoration: underline;
+      }
+
+      @media (min-width: 180px) {
+        .report-back {
+          display: inline-block;
+          min-width: 42px;
+        }
+        .report-name {
+          display: inline-block;
+        }
+      }
+
+      .u-hidden{
+        display:none;}
+      .clearfix::after {
+        display: block;
+        clear: both;
+        content: ""; }
+    script(type='text/javascript').
+      var prevSize;
+      function setElementClass(el, name, names) {
+        if(names){
+          for(var i=0;i<names.length;i++){
+            el.classList.remove(names[i]);
+          }
+        }
+        if(name){
+          el.classList.add(name);
+        }
+      }
+      function calc() {
+        var size = getDocSize();
+        if(prevSize && prevSize.w === size.w && prevSize.h === size.h) {
+          return;
+        }
+        prevSize = size;
+        var r = size.w / size.h;
+        var cols=12;
+        if(r<0.1){
+          cols=1;
+        }else if(r<0.4){
+          cols=2;
+        }else if(r<0.6){
+          cols=3;
+        }else if(r<1.3){
+          cols=4;
+        }else if(r<4){
+          cols=6;
+        }
+        var el=document.getElementById('zs-list');
+        setElementClass(el, 'c-zs-list--col-'+cols,
+        ['c-zs-list--col-1','c-zs-list--col-2','c-zs-list--col-3','c-zs-list--col-4',
+        'c-zs-list--col-6','c-zs-list--col-12']);
+
+        var fontSize;
+        var minItemHeight=130;
+        var rows = 12/cols;
+        var itemHeight = size.h / rows;
+        var itemHeightR = itemHeight / minItemHeight;
+        if (itemHeightR < 0.5) {
+          fontSize='c-zs-list--tiny';
+        } else if(itemHeightR < 1) {
+          fontSize='c-zs-list--small';
+        }else if(itemHeightR < 1.4) {
+          fontSize='c-zs-list--large';
+        }else{
+          fontSize='c-zs-list--huge';
+        }
+        if(fontSize){
+          setElementClass(el, fontSize,
+          ['c-zs-list--tiny','c-zs-list--small','c-zs-list--large','c-zs-list--huge']);
+        }
+        var itemWidth=size.w/cols;
+        if(itemWidth < 70){
+          setElementClass(el, 'c-zs-list--w-tiny', ['c-zs-list--w-small', 'c-zs-list--w-large']);
+        }
+        else if (itemWidth < 90) {
+          setElementClass(el, 'c-zs-list--w-small', ['c-zs-list--w-large', 'c-zs-list--w-tiny']);
+        } else {
+          setElementClass(el, 'c-zs-list--w-large', ['c-zs-list--w-small', 'c-zs-list--w-tiny']);
+        }
+      }
+      function getDocSize(){
+        var w=window,
+        d=document,
+        e=d.documentElement,
+        g=d.getElementsByTagName('body')[0],
+        w=w.innerWidth||e.clientWidth||g.clientWidth,
+        h=w.innerHeight||e.clientHeight||g.clientHeight;
+
+        return {w:w, h:h};
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        calc();
+        setInterval(calc, 1000);
+      })
+
+      function showReport(el, sign, slug) {
+        var URL = "#{links.horoscope.sign('SLUG', {ul:currentCulture.language})}";
+        var url = URL.replace('SLUG', slug);
+        var name = el.childNodes[1].innerText;
+        var dates = el.childNodes[2].innerText;
+        var text = el.childNodes[3].innerText;
+
+        var reportEl = document.getElementById('report');
+        reportEl.childNodes[1].innerText = name;
+        reportEl.childNodes[2].innerHTML = text.replace('\n', '<br/>');
+        reportEl.childNodes[3].childNodes[0].setAttribute('href', url);
+
+        setElementClass(document.getElementById('zs-list'), 'u-hidden');
+        setElementClass(reportEl, null, ['u-hidden']);
+        
+        return false;
+      }
+
+      function hideReport() {
+        setElementClass(document.getElementById('report'), 'u-hidden');
+        setElementClass(document.getElementById('zs-list'), null, ['u-hidden']);
+        
+        return false;
+      }
+      
+  body
+    include ../_includes/zodiac-svg
+    .c-widget.clearfix
+      #zs-list.c-zs-list.c-zs-list--col-12.clearfix
+        each report in reports
+          - var signName = util.signName(report.sign, currentCulture.language)
+          a.c-zs-item(onclick="return showReport(this, #{report.sign}, '#{signName.slug}')",target='_blank', href=links.horoscope.sign(signName.slug, {ul:currentCulture.language}))
+            .c-zs-icon
+              svg(xmlns='http://www.w3.org/2000/svg', viewbox='0 0 20 20')
+                use(href="#svg-zs-icon-"+report.sign)
+            .c-zs-name= signName.name
+            .c-zs-dates= util.formatSignDates(report.sign, config.signDateFormat)
+            .c-zs-text.u-hidden= report.text
+      #report.u-hidden.clearfix
+        .report-back(onclick="return hideReport()")
+          i &lsaquo;
+        .report-name
+        .report-text
+        .report-more
+          a(href='#',target='_blank')= __('detailed_horoscope')
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '#{config.widgetGoogleAnalyticsId}', { 'cookieDomain': '#{config.host}', 'cookieName': '_gackhw' });
+      ga('send', 'pageview');
