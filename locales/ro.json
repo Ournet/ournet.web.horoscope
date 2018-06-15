@@ -40,12 +40,15 @@
 	"api_body": "<h3>Horoscop zilnic</h3><p>${project} oferă gratis rapoarte horoscop pentru website-uri și aplicații.</p><p>Raportele sunt oferite în format JSON la următoarea adresă web:</p><p><code>${schema}//${host}/api/reports.json?client=CLIENT&period=PERIOD</code></p><p>Unde <code>PERIOD</code> (opțional) - este data pentru care se solicită rapoartele. Pentru zi: D${currentDate}, săptămânal: W201812.</p><p>Iar <code>CLIENT</code> (obligatoriu) - este adresa site-ului sau ID-ul aplicației Dvs.</p><p>Exemplu: <code>${schema}//${host}/api/reports.json?client=${host}</code></p><h3>Condiții de utilizare</h3><p>Site-urile web se angajează să adauge link spre ${host}, iar aplicațiile vor menționa sursa.</p>",
 	"subscribe_to_daily_notifications": "Abonează-te la notificări zilnice",
 	"lucky_numbers": "Numere norocoase",
-	"horoscope_on_your_site": "Horoscopul pe siteul tău",
-	"horoscope_on_your_site_info": "",
-	"back_color": "back_color",
-	"text_color": "text_color",
-	"generate": "generate",
-	"preview": "preview",
-	"html_code": "html_code",
-	"detailed_horoscope": "detailed_horoscope"
+	"horoscope_on_your_site": "Horoscopul pe site-ul tău",
+	"horoscope_on_your_site_info": "Horoscopul zilnic gratuit pe site-ul tău",
+	"back_color": "Culoare fundal",
+	"text_color": "Culoare text",
+	"generate": "Generează",
+	"preview": "Previzualizare",
+	"html_code": "Cod HTML",
+	"detailed_horoscope": "Horoscop detaliat",
+	"width": "Lungile",
+	"heigth": "Înălțime",
+	"icon_color": "Culoare imagine"
 }

@@ -10,24 +10,38 @@ block page_main_content
       #widget-tabs.box-tabs(data-ref='#widget-box fieldset')
         .box-tab.active Widget 1
       #widget-box.content-box
-        table.form-table
+        table.form-table#widget-conf
           tr
             td(colspan=2)
               fieldset.form
                 table.form-table
                   tr
-                    th
+                    td
                       label(for='w1-conf__back_color')= __('back_color') + ':'
-                    th
+                    td
                       label(for='w1-conf__text_color')= __('text_color') + ':'
+                    td
+                      label(for='w1-conf__icon_color')= __('icon_color') + ':'
                   tr
                     td
-                      input.conf-input(type='text', name='back_color', value='f2f0ea', maxlength='6', minlength=3)
+                      input#w1-conf__back_color.conf-input(type='text', name='back_color', value='f2f0ea', maxlength='6', minlength=3, style='width:90%')
                     td
-                      input.conf-input(type='text', name='text_color', placeholder='333', maxlength='6', minlength=3)
+                      input#w1-conf__text_color.conf-input(type='text', name='text_color', value='333', maxlength='6', minlength=3, style='width:90%')
+                    td
+                      input#w1-conf__icon_color.conf-input(type='text', name='icon_color', value='cb5800', maxlength='6', minlength=3, style='width:90%')
+                  tr
+                    td
+                      label(for='w1-conf__width')= __('width') + ':'
+                    td
+                      label(for='w1-conf__heigth')= __('heigth') + ':'
+                  tr
+                    td
+                      input#w1-conf__width.conf-input(type='text', name='width', value='100%', maxlength=4, minlength=3, style='width:90%')
+                    td
+                      input#w1-conf__heigth.conf-input(type='text', name='height', value='100%',, maxlength=4, minlength=3, style='width:90%')
             tr
               td
-              td
+                br
                 button#widget-conf-generate.btn.btn-danger(type='button')= __('generate')
       
       br

@@ -53,7 +53,7 @@
     "moment-timezone": "^0.5.1",
     "morgan": "^1.5.1",
     "ournet.data.weather": "^0.6.21",
-    "ournet.links": "^0.2.3",
+    "ournet.links": "^0.4.3",
     "ournet.logger": "^0.1.0",
     "ournet.utils": "^0.1.0",
     "ournet.web.data": "^0.1.6",

@@ -81,5 +81,10 @@
 	"sign_daily_title_format": "%s: Дневен хороскоп",
 	"sign_daily_details_format": "%s. Дневен хороскоп: %s",
 	"subscribe_to_daily_notifications": "Абонамент за дневни известия",
-	"lucky_numbers": "Лъки цифри"
+	"lucky_numbers": "Лъки цифри",
+	"horoscope_on_your_site": "Хороскоп на вашия сайт",
+	"horoscope_on_your_site_info": "Безплатен ежедневен хороскоп на вашия сайт",
+	"detailed_horoscope": "Подробен хороскоп",
+	"heigth": "Височина",
+	"icon_color": "Цвят на изобр."
 }
