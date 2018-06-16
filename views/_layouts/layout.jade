@@ -15,9 +15,9 @@ block page_header_content
         li.dd-item
           a.selected(href=links.horoscope.home())= __('horoscope')
         li.dd-item
-          a(href='http://'+links.news.host+links.news.home({ul: currentCulture.language}))= __('news')
+          a(href='http://'+Links.getHost('news', currentCulture.country)+links.news.home({ul: currentCulture.language}))= __('news')
         li.dd-item
-          a(href='http://'+links.weather.host+(links.weather.home({ul: currentCulture.language})))= __('weather')
+          a(href='http://'+Links.getHost('weather',currentCulture.country)+links.weather.home({ul: currentCulture.language}))= __('weather')
     .col-sm-6.col-md-7.hidden-xs
       #header-widgets
         .col-md-6.hidden-sm
