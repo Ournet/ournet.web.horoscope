@@ -31,7 +31,7 @@ block content
                 if (i < 4)
                   .list-item
                     .item.ot-news.clearfix
-                      a.media(href='http://'+links.news.host+ links.news.story(story.uniqueName, story.id))
+                      a.media(href='http://'+Links.getHost('news', currentCulture.country)+ links.news.story(story.uniqueName, story.id))
                         .media-left
                           img.media-object(alt='', src=(Links.cdn.wi.stories('square', story.imageId)))
                         .media-body= story.title
