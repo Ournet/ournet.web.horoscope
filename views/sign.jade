@@ -84,10 +84,11 @@ block append scripts
       OneSignal.push(function() {
         OneSignal.on('notificationPermissionChange', function(permissionChange) {
           var currentPermission = permissionChange.to;
+          var category='notifications-horo';
           if (currentPermission === 'granted') {
             OneSignal.sendTag('zodiac-sign', '#{sign.id}');
           }
-          ga('send', 'event', 'notifications', currentPermission);
+          ga('send', 'event', category, currentPermission);
         });
         // Occurs when the user's subscription changes to a new value.
         OneSignal.on('subscriptionChange', function (isSubscribed) {
@@ -102,7 +103,7 @@ block append scripts
         // If we're on an unsupported browser, do nothing
         if (!OneSignal.isPushNotificationsSupported()) {
           hideSubscribe();
-          ga('send', 'event', 'notifications', 'not-supported');
+          ga('send', 'event', category, 'not-supported');
           return;
         }
         OneSignal.isPushNotificationsEnabled(function(isEnabled) {
