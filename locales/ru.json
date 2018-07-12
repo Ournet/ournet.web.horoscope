@@ -98,5 +98,6 @@
 	"horoscope_on_your_site_info": "Бесплатный ежедневный гороскоп на вашем сайте",
 	"detailed_horoscope": "Детальный гороскоп",
 	"heigth": "Высота",
-	"icon_color": "Цвет изобр."
+	"icon_color": "Цвет изобр.",
+	"notifications_subscribe_for_sign": "$s: Получает ежедневные уведомления"
 }

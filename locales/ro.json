@@ -50,5 +50,6 @@
 	"detailed_horoscope": "Horoscop detaliat",
 	"width": "Lungile",
 	"heigth": "Înălțime",
-	"icon_color": "Culoare imagine"
+	"icon_color": "Culoare imagine",
+	"notifications_subscribe_for_sign": "%s: Primește notificări zilnice"
 }

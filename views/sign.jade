@@ -23,15 +23,11 @@ block horoscope_content
       +weekZodiacSignsIcons()
     else
       +horoscopeDayReport(currentSignReport, currentDayPeriodText, true)
-      //- include ./_includes/n-subscribe
       +dayZodiacSignsIcons()
 
   .report-margin
-    .c-lead.hidden.js-subscribe-block
-      br
-      a.btn.btn-primary.js-subscribe-btn(href='#')
-        strong= __('subscribe_to_daily_notifications')
-      br
+    if (config.oneSignal)
+      include ./_includes/notifications-subscribe-bar
       br
     include _includes/ad-bottom
     br
@@ -39,33 +35,10 @@ block horoscope_content
     br
     include _includes/ad-bottom
 
-block append scripts
-  if (config.oneSignal)
+
     script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
     script.
       var OneSignal = window.OneSignal || [];
-
-      $('.js-subscribe-btn').click(function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        ga('send', 'event', 'notifications', 'click-subscribe-btn');
-        subscribeToNotifications();
-      });
-
-      function subscribeToNotifications() {
-        OneSignal.registerForPushNotifications();
-        ga('send', 'event', 'notifications', 'show-register-native');
-        //- event && event.preventDefault();
-      }
-
-      function hideSubscribe() {
-        $('.js-subscribe-block').addClass('hidden');
-        //- document.getElementById('js-subscribe-block').style.display = 'none';
-      }
-      function showSubscribe() {
-        $('.js-subscribe-block').removeClass('hidden');
-        //- document.getElementById('js-subscribe-block').style.display = 'block';
-      }
 
       OneSignal.push(['init', {
         appId: "#{config.oneSignal.appId}",
@@ -81,41 +54,90 @@ block append scripts
         },
         safari_web_id: "#{config.oneSignal.safari_web_id}"
       }]);
+      
       OneSignal.push(function() {
-        OneSignal.on('notificationPermissionChange', function(permissionChange) {
-          var currentPermission = permissionChange.to;
-          var category='notifications-horo';
-          if (currentPermission === 'granted') {
-            OneSignal.sendTag('zodiac-sign', '#{sign.id}');
+
+        var category='notifications-horo';
+        
+        function initNotifications(permission) {
+          var currentTags;
+          var signId = '#{sign.id}';
+
+          function subscribedToCurrentSign() {
+            return currentTags && currentTags['zodiac-sign'] == signId;
           }
-          ga('send', 'event', category, currentPermission);
-        });
-        // Occurs when the user's subscription changes to a new value.
-        OneSignal.on('subscriptionChange', function (isSubscribed) {
-          if (isSubscribed) {
-            hideSubscribe();
-            OneSignal.sendTag('zodiac-sign', '#{sign.id}');
-          }else{
+
+          function setTags() {
+            OneSignal.sendTags({'zodiac-sign': signId});
+          }
+
+          function subscribeToNotifications() {
+            OneSignal.registerForPushNotifications();
+            ga('send', 'event', category, 'show-register-native');
+          }
+
+          function hideSubscribe() {
+            $('.c-subscribe-bar').addClass('hidden');
+          }
+          function showSubscribe() {
+            $('.c-subscribe-bar').removeClass('hidden');
+          }
+
+          if(permission === 'granted') {
+            OneSignal.getTags(function(tags) {
+              currentTags = tags;
+              if (!subscribedToCurrentSign()) {
+                showSubscribe();
+              }
+            });
+          } else {
             showSubscribe();
           }
-        });
+          
+          $('.c-subscribe-bar').click(function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            ga('send', 'event', category, 'click-subscribe-btn');
+            if(permission === 'granted') {
+              setTags();
+              ga('send', 'event', category, 'changed-sign', signId);
+              hideSubscribe();
+            } else {
+              subscribeToNotifications();
+            }
+          });
+
+
+          OneSignal.on('notificationPermissionChange', function(permissionChange) {
+            var currentPermission = permissionChange.to;
+            if (currentPermission === 'granted') {
+              setTags();
+            }
+            ga('send', 'event', category, currentPermission);
+          });
+          // Occurs when the user's subscription changes to a new value.
+          OneSignal.on('subscriptionChange', function (isSubscribed) {
+            if (isSubscribed) {
+              hideSubscribe();
+              setTags();
+            } else {
+              showSubscribe();
+            }
+          });
+
+        }
 
         // If we're on an unsupported browser, do nothing
-        if (!OneSignal.isPushNotificationsSupported()) {
+        if (OneSignal.isPushNotificationsSupported()) {
+          OneSignal.push(["getNotificationPermission", function(permission) {
+              initNotifications(permission);
+          }]);
+          ga('send', 'event', category, 'supported');
+        } else {
           hideSubscribe();
           ga('send', 'event', category, 'not-supported');
-          return;
         }
-        OneSignal.isPushNotificationsEnabled(function(isEnabled) {
-          if (isEnabled) {
-            hideSubscribe();
-          } else {
-            //- showSubscribe();
-            setTimeout(subscribeToNotifications, 1000*2)
-          }
-        });
       });
-
   script.
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
