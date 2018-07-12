@@ -35,7 +35,8 @@ block horoscope_content
     br
     include _includes/ad-bottom
 
-
+block append scripts
+  if (config.oneSignal)
     script(src='https://cdn.onesignal.com/sdks/OneSignalSDK.js', async)
     script.
       var OneSignal = window.OneSignal || [];
@@ -138,6 +139,8 @@ block horoscope_content
           ga('send', 'event', category, 'not-supported');
         }
       });
+      
+block append scripts
   script.
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
