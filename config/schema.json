@@ -3,6 +3,9 @@
     "title": "Config",
     "type": "object",
     "properties": {
+        "project": {
+            "type": "string"
+        },
         "name": {
             "type": "string"
         },
@@ -87,55 +90,6 @@
                         "type": "string"
                     }
                 }
-            }
-        },
-        "lists": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "object",
-                        "patternProperties": {
-                            "^[a-z]{2}$": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "title": {
-                        "type": "object",
-                        "patternProperties": {
-                            "^[a-z]{2}$": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "description": {
-                        "type": "object",
-                        "patternProperties": {
-                            "^[a-z]{2}$": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "image": {
-                        "type": "string"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "required": [
-                    "id",
-                    "name",
-                    "ids"
-                ]
             }
         },
         "mainPlacesCount": {

@@ -1,5 +1,6 @@
 {
 	"$schema": "./schema.json",
+	"project": "horoscope",
 	"mainPlacesCount": 20,
 	"monthFormat": "D MMMM",
 	"favicon": "https://assets.ournetcdn.net/ournet/img/icons/ournet-icon-16.png",
