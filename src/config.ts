@@ -53,9 +53,7 @@ export interface AppConfig {
     internationalIds: string[]
     shareServices: string[]
     timezone: string
-    dayFormat: string
-    dateFormat: string
-    signDateFormat: string
+    googleAnalyticsId: string
 
     assets: {
         css: {
@@ -67,7 +65,12 @@ export interface AppConfig {
             main: string,
             pageWidget: string,
         }
-    }
+    },
+    oneSignal?: {
+        appId: string
+        safari_web_id: string
+    },
+    facebookId: string,
 }
 
 export function getFavicon(config: AppConfig, filename?: string) {

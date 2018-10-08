@@ -4,6 +4,7 @@ import { RootViewModel } from '../../../view-models/root-view-model';
 import { HoroscopeReport } from '@ournet/api-client';
 import { HoroscopesHelper, HoroscopeSign } from '@ournet/horoscopes-domain';
 import { formatSignDates, encodeReportText } from '../../../helpers';
+import { LocalesNames } from '../../../locales-names';
 
 
 export type DayReportProps = {
@@ -16,7 +17,7 @@ export type DayReportProps = {
 export default class HoroscopeDayReport extends React.Component<DayReportProps> {
     render() {
         const { date, report, root, footer } = this.props;
-        const { lang, links, config } = root;
+        const { lang, links, __ } = root;
         const sign = HoroscopesHelper.getSignName(report.sign as HoroscopeSign, lang);
 
         if (!sign) {
@@ -34,12 +35,12 @@ export default class HoroscopeDayReport extends React.Component<DayReportProps> 
                             </svg>
                         </div>
                         <h4>{sign.name}</h4>
-                        <div className='c-report__dates'>{formatSignDates(report.sign, config.signDateFormat, lang)}</div>
+                        <div className='c-report__dates'>{formatSignDates(report.sign, __(LocalesNames.sign_date_format), lang)}</div>
                     </div>
                 </a>
                 <div className='c-report__body'>
                     <div className='c-report__text' dangerouslySetInnerHTML={{ __html: encodeReportText(report.text) }}></div>
-                    {footer && <div className='c-report__footer'><div className='c-report__numbers'>{report.numbers.map((no, i) => <span key={i}>{no}</span>)}</div></div>}
+                    {footer && <div className='c-report__footer'><div className='c-report__numbers'>{__(LocalesNames.lucky_numbers)}: {report.numbers.map((no, i) => <span key={i}>{no}</span>)}</div></div>}
                 </div>
             </div >
         )

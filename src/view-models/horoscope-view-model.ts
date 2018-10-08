@@ -3,6 +3,7 @@ import { Place, HourlyForecastDataPoint, HourlyForecastDataPointStringFields, Ne
 import { createQueryApiClient } from "../data/api";
 import logger from "../logger";
 import * as moment from "moment-timezone";
+import { LocalesNames } from "../locales-names";
 
 
 export class HoroscopeViewModelBuilder<T extends HoroscopeViewModel, I extends PageViewModelInput> extends PageViewModelBuilder<T, I> {
@@ -11,7 +12,7 @@ export class HoroscopeViewModelBuilder<T extends HoroscopeViewModel, I extends P
         super(input, api);
         
         const model = this.model;
-        const { lang, config } = model;
+        const { lang, config, __ } = model;
 
         const currentDate = model.currentDate = moment().tz(config.timezone).locale(lang);
         model.currentDayPeriod = 'D' + currentDate.format('YYYYMMDD');
@@ -20,7 +21,7 @@ export class HoroscopeViewModelBuilder<T extends HoroscopeViewModel, I extends P
         const weekStartDate = currentDate.clone().isoWeekday(1).locale(lang);
         const weekEndDate = currentDate.clone().isoWeekday(7).locale(lang);
 
-        model.currentDayPeriodText = currentDate.format(config.dayFormat);
+        model.currentDayPeriodText = currentDate.format(__(LocalesNames.day_format));
         model.currentWeekPeriodText = weekStartDate.format('D MMM') + ' - ' + weekEndDate.format('D MMMM YYYY');
     }
 
