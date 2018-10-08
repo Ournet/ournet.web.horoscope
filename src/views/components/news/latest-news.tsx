@@ -3,10 +3,10 @@ import * as React from 'react';
 import GroupHeader from '../group-header';
 import { LocalesNames } from '../../../locales-names';
 import { getHost } from 'ournet.links';
-import { WeatherViewModel } from '../../../view-models/horoscope-view-model';
+import { HoroscopeViewModel } from '../../../view-models/horoscope-view-model';
 import { ImageStorageHelper } from '@ournet/images-domain';
 
-export default class LatestNews extends React.Component<WeatherViewModel> {
+export default class LatestNews extends React.Component<HoroscopeViewModel> {
     render() {
         const { links, __, lang, country, latestNews } = this.props;
         if (!links.news || latestNews.length === 0) {

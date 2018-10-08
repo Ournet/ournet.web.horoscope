@@ -11,16 +11,20 @@
 	"domain": "ournet.ro",
 	"host": "meteo.ournet.ro",
 	"hour_format": "HH:mm",
+	"dayFormat": "dddd, D MMMM",
+	"dateFormat": "D MMMM",
+	"signDateFormat": "D MMM",
+	"monthFormat": "D MMMM",
 	"email": "info@ournet.ro",
 	"googleAnalyticsId": "UA-1490399-11",
 	"favicon": "//assets.ournetcdn.net/ournet/img/icons/ournet-icon-16.png",
 	"placesCount": 18000,
 	"widgetGoogleAnalyticsId": "UA-1490399-48",
 	"projects": [
+		"horoscope",
 		"news",
 		"weather",
-		"exchange",
-		"horoscope"
+		"exchange"
 	],
 	"shareServices": [
 		"facebook",

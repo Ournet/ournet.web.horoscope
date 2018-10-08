@@ -23,7 +23,7 @@ export function initLocale(req: Request, res: Response, config: AppConfig): Loca
     }
     res.locals.locale = res.locale = lang;
     i18n.init(req, res);
-    res.setLocale(lang);
+    req.setLocale(lang);
 
     return {
         lang, country: config.country

@@ -51,5 +51,15 @@
 	"width": "Lungile",
 	"heigth": "Înălțime",
 	"icon_color": "Culoare imagine",
-	"notifications_subscribe_for_sign": "%s: Primește notificări zilnice"
+	"notifications_subscribe_for_sign": "%s: Primește notificări zilnice",
+	"Horoscopul zilei": "Horoscopul zilei",
+	"Horoscop zilnic. Horoscopul pentru astazi si maine.": "Horoscop zilnic. Horoscopul pentru astazi si maine.",
+	"Horoscopul pentru astăzi %s.": "Horoscopul pentru astăzi %s.",
+	"Ultimele știri": "Ultimele știri",
+	"Info": "Info",
+	"Contact": "Contact",
+	"Internațional": "Internațional",
+	"Util": "Util",
+	"Horoscopul pe site-ul tău": "Horoscopul pe site-ul tău",
+	"Horoscop: %s": "Horoscop: %s"
 }

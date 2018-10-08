@@ -52,6 +52,10 @@ export interface AppConfig {
     email: string
     internationalIds: string[]
     shareServices: string[]
+    timezone: string
+    dayFormat: string
+    dateFormat: string
+    signDateFormat: string
 
     assets: {
         css: {

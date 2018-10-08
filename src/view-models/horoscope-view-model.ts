@@ -1,10 +1,29 @@
 import { PageViewModel, PageViewModelInput, PageViewModelBuilder } from "./page-view-model";
-import { Place, HourlyForecastDataPoint, HourlyForecastDataPointStringFields, NewsEvent } from "@ournet/api-client";
+import { Place, HourlyForecastDataPoint, HourlyForecastDataPointStringFields, NewsEvent, OurnetQueryApi } from "@ournet/api-client";
 import { createQueryApiClient } from "../data/api";
 import logger from "../logger";
+import * as moment from "moment-timezone";
 
 
-export class HoroscopeViewModelBuilder<T extends WeatherViewModel, I extends PageViewModelInput> extends PageViewModelBuilder<T, I> {
+export class HoroscopeViewModelBuilder<T extends HoroscopeViewModel, I extends PageViewModelInput> extends PageViewModelBuilder<T, I> {
+
+    constructor(input: I, api: OurnetQueryApi<T>) {
+        super(input, api);
+        
+        const model = this.model;
+        const { lang, config } = model;
+
+        const currentDate = model.currentDate = moment().tz(config.timezone).locale(lang);
+        model.currentDayPeriod = 'D' + currentDate.format('YYYYMMDD');
+        model.currentWeekPeriod = 'W' + currentDate.format('YYYYWW');
+
+        const weekStartDate = currentDate.clone().isoWeekday(1).locale(lang);
+        const weekEndDate = currentDate.clone().isoWeekday(7).locale(lang);
+
+        model.currentDayPeriodText = currentDate.format(config.dayFormat);
+        model.currentWeekPeriodText = weekStartDate.format('D MMM') + ' - ' + weekEndDate.format('D MMMM YYYY');
+    }
+
     async build() {
         const apiClient = createQueryApiClient<T>();
 
@@ -47,8 +66,17 @@ export class HoroscopeViewModelBuilder<T extends WeatherViewModel, I extends Pag
 }
 
 
-export interface WeatherViewModel extends PageViewModel {
+export interface HoroscopeViewModel extends PageViewModel {
     capital: Place
     capitalForecast: HourlyForecastDataPoint
     latestNews: NewsEvent[]
+
+    currentDate: moment.Moment
+    currentDayPeriod: string
+    currentWeekPeriod: string
+    currentDayPeriodText: string
+    currentWeekPeriodText: string
+
+    title: string
+    subTitle: string
 }
