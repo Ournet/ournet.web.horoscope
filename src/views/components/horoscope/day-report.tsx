@@ -15,7 +15,7 @@ export type DayReportProps = {
 
 export default class HoroscopeDayReport extends React.Component<DayReportProps> {
     render() {
-        const { date, report, root } = this.props;
+        const { date, report, root, footer } = this.props;
         const { lang, links, config } = root;
         const sign = HoroscopesHelper.getSignName(report.sign as HoroscopeSign, lang);
 
@@ -39,6 +39,7 @@ export default class HoroscopeDayReport extends React.Component<DayReportProps> 
                 </a>
                 <div className='c-report__body'>
                     <div className='c-report__text'>{report.text}</div>
+                    {footer && <div className='c-report__footer'><div className='c-report__numbers'>{report.numbers.map((no,i) => <span key={i}>{no}</span>)}</div></div>}
                 </div>
             </div >
         )
