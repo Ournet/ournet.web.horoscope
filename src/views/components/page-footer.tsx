@@ -27,7 +27,7 @@ export default class PageFooter extends React.Component<RootViewModel> {
                         </div>
                         <div className='o-layout__item u-1/3@tablet o-footer-useful'>
                             <h4>{__(LocalesNames.useful)}</h4>
-                            <div><a href={links.horoscope.widgets({ ul: lang })}>{__(LocalesNames.horoscope_on_your_site)}</a></div>
+                            <div><a href={links.horoscope.sign('api', { ul: lang })}>{__(LocalesNames.export_horoscope)}</a></div>
                             {config.projects.map(project => <div key={project}><a href={getSchema(project, country) + '//' + getHost(project, country)}>{LocalesHelper.getProjectName(__, project)}</a></div>)}
                         </div>
                     </div>

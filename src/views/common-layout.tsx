@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { HoroscopeViewModel } from '../view-models/horoscope-view-model';
 import RootLayout from './root-layout';
-import env from '../env';
 import LatestNews from './components/news/latest-news';
 
 export default class CommonLayout extends React.Component<HoroscopeViewModel> {
     render() {
-        const { config } = this.props;
-
         return (
             <RootLayout {...this.props}>
                 <div className="o-layout">
@@ -22,10 +19,6 @@ export default class CommonLayout extends React.Component<HoroscopeViewModel> {
                         </div>
                     </div>
                 </div>
-                {env.isProduction ?
-                    <script key='3' async={true} src={`//assets.ournetcdn.net/ournet/css/${config.project}/main-${config.assets.js.main}.js`} />
-                    : <script key='4' async={true} src={`http://localhost:8080/js/${config.project}/main.js`} />
-                }
             </RootLayout>
         )
     }
