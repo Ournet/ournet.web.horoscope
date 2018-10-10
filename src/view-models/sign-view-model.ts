@@ -45,7 +45,7 @@ export class SignViewModelBuilder extends HoroscopeViewModelBuilder<SignViewMode
 function getSignBySlug(slug: string, lang: string): { id: HoroscopeSign, name: string, slug: string } {
     for (let i = 1; i <= 12; i++) {
         const sign = HoroscopesHelper.getSignName(i as HoroscopeSign, lang);
-        if (sign) {
+        if (sign && sign.slug === slug) {
             return { ...sign, id: (i as HoroscopeSign) };
         }
     }

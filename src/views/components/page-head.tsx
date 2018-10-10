@@ -25,7 +25,7 @@ export default class PageHead extends React.Component<PageViewModel> {
                 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimal-ui" />
                 <title>{head.title}</title>
                 {head.description && <meta name="description" content={head.description} />}
-                {head.canonical && <meta name="description" content={head.canonical} />}
+                {head.canonical && <link rel="canonical" href={head.canonical} />}
                 <link rel='shortcut icon' href={`//assets.ournetcdn.net/ournet/img/icons/${shortDomainName}/favicon.ico`} type='image/x-icon' />
                 <link rel='apple-touch-icon' href={`//assets.ournetcdn.net/ournet/img/icons/${shortDomainName}/apple-touch-icon.png`} />
                 {head.elements}

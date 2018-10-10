@@ -5,7 +5,8 @@ import PageTitle from '../components/page-title';
 import { Share } from '../components/share';
 import HoroscopeDayReport from '../components/horoscope/day-report';
 import { SignViewModel } from '../../view-models/sign-view-model';
-import addBottom from '../components/add-bottom';
+import adBottom from '../components/ad-bottom';
+import facebookScript from '../components/facebook-script';
 
 export default class SignPage extends React.Component<SignViewModel> {
     render() {
@@ -21,11 +22,11 @@ export default class SignPage extends React.Component<SignViewModel> {
                     <HoroscopeDayReport root={this.props} report={report} date={currentDayPeriodText} footer={true} />
                     <div className='u-report-margin'>
                         <br />
-                        {addBottom()}
+                        {adBottom()}
                         <br />
                         <div className='fb-comments' data-href={head.canonical} data-numposts="5" data-width="100%"></div>
                         <br />
-                        {addBottom()}
+                        {adBottom()}
                     </div>
                 </main>
                 {config.oneSignal &&
@@ -134,14 +135,7 @@ OneSignal.push(function() {
     }
 });`}}></script>
                     </div>}
-                <script dangerouslySetInnerHTML={{
-                    __html: `(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/${lang + '_' + country.toUpperCase()}/sdk.js#xfbml=1&version=v2.6&appId=${config.facebookId}";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));`}}></script>
+                {facebookScript(config.facebookId, lang, country)}
             </CommonLayout>
         )
     }
