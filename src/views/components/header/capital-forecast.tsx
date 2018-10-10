@@ -17,7 +17,7 @@ export interface CapitalForecastComponentProps {
 export default class CapitalForecastComponent extends React.Component<CapitalForecastComponentProps> {
     render() {
         const { place, forecast, root } = this.props;
-        const { __, links, lang, country } = root;
+        const { links, lang, country } = root;
         const name = PlaceHelper.getName(place, lang);
         return (
             <div className='c-cap'>
